@@ -37,6 +37,7 @@ class BboxHead(nn.Module):
 class LandmarkHead(nn.Module):
     def __init__(self,inchannels=512,num_anchors=3):
         super(LandmarkHead,self).__init__()
+        print("num_anchors landm head ", num_anchors)
         self.conv1x1 = nn.Conv2d(inchannels,num_anchors*10,kernel_size=(1,1),stride=1,padding=0)
 
     def forward(self,x):
