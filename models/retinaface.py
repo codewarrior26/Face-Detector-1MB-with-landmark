@@ -117,6 +117,14 @@ class RetinaFace(nn.Module):
         feature3 = self.ssh3(fpn[2])
         features = [feature1, feature2, feature3]
 
+        print(f"feature1.shape: {feature1.shape}")
+        print(f"feature2.shape: {feature2.shape}")
+        print(f"feature3.shape: {feature3.shape}")
+        print(f"self.BboxHead[0](feature1).shape: {self.BboxHead[0](feature1).shape}")
+        print(f"self.ClassHead[0](feature1).shape: {self.ClassHead[0](feature1).shape}")
+        print(f"self.LandmarkHead[0](feature1).shape: {self.LandmarkHead[0](feature1).shape}")
+
+
         bbox_regressions = torch.cat([self.BboxHead[i](feature) for i, feature in enumerate(features)], dim=1)
         classifications = torch.cat([self.ClassHead[i](feature) for i, feature in enumerate(features)],dim=1)
         ldm_regressions = torch.cat([self.LandmarkHead[i](feature) for i, feature in enumerate(features)], dim=1)
