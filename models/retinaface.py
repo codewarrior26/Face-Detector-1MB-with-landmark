@@ -121,6 +121,10 @@ class RetinaFace(nn.Module):
         classifications = torch.cat([self.ClassHead[i](feature) for i, feature in enumerate(features)],dim=1)
         ldm_regressions = torch.cat([self.LandmarkHead[i](feature) for i, feature in enumerate(features)], dim=1)
 
+        print(f"bbox_regressions.shape: {bbox_regressions.shape}")  # Should be [batch_size, 168, 4]
+        print(f"classifications.shape: {classifications.shape}")  # Should be [batch_size, 168, 2]
+        print(f"ldm_regressions.shape: {ldm_regressions.shape}")  # Should be [batch_size, 168, 10]
+
         if self.phase == 'train':
             output = (bbox_regressions, classifications, ldm_regressions)
         else:
