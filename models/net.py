@@ -109,6 +109,7 @@ class MobileNetV1(nn.Module):
             conv_dw(32, 32, 1),  # 19
             conv_dw(32, 64, 2),  # 27
             conv_dw(64, 64, 1),  # 43
+            conv_dw(64, 64, 2), # new
         )
         self.stage2 = nn.Sequential(
             conv_dw(64, 128, 2),  # 43 + 16 = 59
