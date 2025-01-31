@@ -115,6 +115,7 @@ if __name__ == '__main__':
         target_size = args.long_side
         max_size = float(args.long_side)
         im_shape = img.shape
+        print("test image original shape ", im_shape)
         im_size_min = np.min(im_shape[0:2])
         im_size_max = np.max(im_shape[0:2])
         resize = float(target_size) / float(im_size_min)
@@ -123,10 +124,11 @@ if __name__ == '__main__':
             resize = float(max_size) / float(im_size_max)
         if args.origin_size:
             resize = 1
-
+          
         if resize != 1:
             img = cv2.resize(img, None, None, fx=resize, fy=resize, interpolation=cv2.INTER_LINEAR)
         im_height, im_width, _ = img.shape
+        print("test image new  shape and scale ", im_shape, resize)
         scale = torch.Tensor([img.shape[1], img.shape[0], img.shape[1], img.shape[0]])
         img -= (104, 117, 123)
         img = img.transpose(2, 0, 1)
