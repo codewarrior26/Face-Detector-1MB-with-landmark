@@ -110,6 +110,7 @@ class RetinaFace(nn.Module):
 
     def forward(self,inputs):
         out = self.body(inputs)
+        print("body output shape ", out.shape)
 
         # FPN
         fpn = self.fpn(out)
