@@ -128,7 +128,7 @@ if __name__ == '__main__':
         if resize != 1:
             img = cv2.resize(img, None, None, fx=resize, fy=resize, interpolation=cv2.INTER_LINEAR)
         im_height, im_width, _ = img.shape
-        print("test image new  shape and scale ", im_shape, resize)
+        print("test image new  shape and scale ", im_shape, img.shape)
         scale = torch.Tensor([img.shape[1], img.shape[0], img.shape[1], img.shape[0]])
         img -= (104, 117, 123)
         img = img.transpose(2, 0, 1)
