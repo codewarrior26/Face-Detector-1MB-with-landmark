@@ -114,15 +114,22 @@ class RetinaFace(nn.Module):
         # FPN
         fpn = self.fpn(out)
 
+        print(f"FPN output shapes:")
+        print(f"fpn[0]: {fpn[0].shape}") 
+        print(f"fpn[1]: {fpn[1].shape}") 
+        print(f"fpn[2]: {fpn[2].shape}") 
+
         # SSH
         feature1 = self.ssh1(fpn[0])
         feature2 = self.ssh2(fpn[1])
         feature3 = self.ssh3(fpn[2])
         features = [feature1, feature2, feature3]
 
-        print(f"feature1.shape: {feature1.shape}")
-        print(f"feature2.shape: {feature2.shape}")
-        print(f"feature3.shape: {feature3.shape}")
+        print(f"SSH output shapes:")
+        print(f"feature1: {feature1.shape}") 
+        print(f"feature2: {feature2.shape}") 
+        print(f"feature3: {feature3.shape}") 
+        
         print(f"self.BboxHead[0](feature1).shape: {self.BboxHead[0](feature1).shape}")
         print(f"self.ClassHead[0](feature1).shape: {self.ClassHead[0](feature1).shape}")
         print(f"self.LandmarkHead[0](feature1).shape: {self.LandmarkHead[0](feature1).shape}")
