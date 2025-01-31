@@ -113,7 +113,7 @@ if __name__ == '__main__':
 
         # testing scale
         target_size = args.long_side
-        max_size = args.long_side
+        max_size = float(args.long_side)
         im_shape = img.shape
         im_size_min = np.min(im_shape[0:2])
         im_size_max = np.max(im_shape[0:2])
