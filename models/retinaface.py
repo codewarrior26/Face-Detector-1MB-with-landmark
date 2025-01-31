@@ -30,7 +30,10 @@ class BboxHead(nn.Module):
 
     def forward(self,x):
         out = self.conv1x1(x)
+        print(f"BboxHead raw output shape before permute: {out.shape}")  
         out = out.permute(0,2,3,1).contiguous()
+
+        print(f"BboxHead output after permute: {out.shape}")
 
         return out.view(out.shape[0], -1, 4)
 
