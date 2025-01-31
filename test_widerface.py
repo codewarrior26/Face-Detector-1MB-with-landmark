@@ -136,10 +136,12 @@ if __name__ == '__main__':
 
         _t['forward_pass'].tic()
         loc, conf, landms = net(img)  # forward pass
+        print("loc forward pass shape ", loc.shape)
         _t['forward_pass'].toc()
         _t['misc'].tic()
         priorbox = PriorBox(cfg, image_size=(im_height, im_width))
         priors = priorbox.forward()
+        print("Priors shape is ", priors.shape)
         priors = priors.to(device)
         prior_data = priors.data
         boxes = decode(loc.data.squeeze(0), prior_data, cfg['variance'])
