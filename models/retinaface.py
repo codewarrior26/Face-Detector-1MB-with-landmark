@@ -123,8 +123,8 @@ class RetinaFace(nn.Module):
         print(f"self.BboxHead[0](feature1).shape: {self.BboxHead[0](feature1).shape}")
         print(f"self.ClassHead[0](feature1).shape: {self.ClassHead[0](feature1).shape}")
         print(f"self.LandmarkHead[0](feature1).shape: {self.LandmarkHead[0](feature1).shape}")
-        print(f"self.BboxHead[0](feature2).shape: {self.BboxHead[0](feature1).shape}")
-        print(f"self.BboxHead[0](feature3).shape: {self.BboxHead[0](feature1).shape}")
+        print(f"self.BboxHead[1](feature2).shape: {self.BboxHead[0](feature1).shape}")
+        print(f"self.BboxHead[2](feature3).shape: {self.BboxHead[0](feature1).shape}")
 
 
         bbox_regressions = torch.cat([self.BboxHead[i](feature) for i, feature in enumerate(features)], dim=1)
