@@ -118,10 +118,10 @@ class RetinaFace(nn.Module):
         # FPN
         fpn = self.fpn(out)
 
-        print(f"FPN output shapes:")
-        print(f"fpn[0]: {fpn[0].shape}") 
-        print(f"fpn[1]: {fpn[1].shape}") 
-        print(f"fpn[2]: {fpn[2].shape}") 
+        #print(f"FPN output shapes:")
+        #print(f"fpn[0]: {fpn[0].shape}") 
+        #print(f"fpn[1]: {fpn[1].shape}") 
+        #print(f"fpn[2]: {fpn[2].shape}") 
 
         # SSH
         feature1 = self.ssh1(fpn[0])
@@ -129,25 +129,25 @@ class RetinaFace(nn.Module):
         feature3 = self.ssh3(fpn[2])
         features = [feature1, feature2, feature3]
 
-        print(f"SSH output shapes:")
-        print(f"feature1: {feature1.shape}") 
-        print(f"feature2: {feature2.shape}") 
-        print(f"feature3: {feature3.shape}") 
+        #print(f"SSH output shapes:")
+        #print(f"feature1: {feature1.shape}") 
+        #print(f"feature2: {feature2.shape}") 
+        #print(f"feature3: {feature3.shape}") 
         
-        print(f"self.BboxHead[0](feature1).shape: {self.BboxHead[0](feature1).shape}")
-        print(f"self.ClassHead[0](feature1).shape: {self.ClassHead[0](feature1).shape}")
-        print(f"self.LandmarkHead[0](feature1).shape: {self.LandmarkHead[0](feature1).shape}")
-        print(f"self.BboxHead[1](feature2).shape: {self.BboxHead[0](feature1).shape}")
-        print(f"self.BboxHead[2](feature3).shape: {self.BboxHead[0](feature1).shape}")
+        #print(f"self.BboxHead[0](feature1).shape: {self.BboxHead[0](feature1).shape}")
+        #print(f"self.ClassHead[0](feature1).shape: {self.ClassHead[0](feature1).shape}")
+        #print(f"self.LandmarkHead[0](feature1).shape: {self.LandmarkHead[0](feature1).shape}")
+        #print(f"self.BboxHead[1](feature2).shape: {self.BboxHead[0](feature1).shape}")
+        #print(f"self.BboxHead[2](feature3).shape: {self.BboxHead[0](feature1).shape}")
 
 
         bbox_regressions = torch.cat([self.BboxHead[i](feature) for i, feature in enumerate(features)], dim=1)
         classifications = torch.cat([self.ClassHead[i](feature) for i, feature in enumerate(features)],dim=1)
         ldm_regressions = torch.cat([self.LandmarkHead[i](feature) for i, feature in enumerate(features)], dim=1)
 
-        print(f"bbox_regressions.shape: {bbox_regressions.shape}")  # Should be [batch_size, 168, 4]
-        print(f"classifications.shape: {classifications.shape}")  # Should be [batch_size, 168, 2]
-        print(f"ldm_regressions.shape: {ldm_regressions.shape}")  # Should be [batch_size, 168, 10]
+        #print(f"bbox_regressions.shape: {bbox_regressions.shape}")  # Should be [batch_size, 168, 4]
+        #print(f"classifications.shape: {classifications.shape}")  # Should be [batch_size, 168, 2]
+        #print(f"ldm_regressions.shape: {ldm_regressions.shape}")  # Should be [batch_size, 168, 10]
 
         if self.phase == 'train':
             output = (bbox_regressions, classifications, ldm_regressions)
