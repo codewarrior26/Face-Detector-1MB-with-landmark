@@ -30,17 +30,17 @@ class BboxHead(nn.Module):
 
     def forward(self,x):
         out = self.conv1x1(x)
-        print(f"BboxHead raw output shape before permute: {out.shape}")  
+        #print(f"BboxHead raw output shape before permute: {out.shape}")  
         out = out.permute(0,2,3,1).contiguous()
 
-        print(f"BboxHead output after permute: {out.shape}")
+        #print(f"BboxHead output after permute: {out.shape}")
 
         return out.view(out.shape[0], -1, 4)
 
 class LandmarkHead(nn.Module):
     def __init__(self,inchannels=512,num_anchors=3):
         super(LandmarkHead,self).__init__()
-        print("num_anchors landm head ", num_anchors)
+        #print("num_anchors landm head ", num_anchors)
         self.conv1x1 = nn.Conv2d(inchannels,num_anchors*10,kernel_size=(1,1),stride=1,padding=0)
 
     def forward(self,x):
@@ -110,9 +110,9 @@ class RetinaFace(nn.Module):
 
     def forward(self,inputs):
         out = self.body(inputs)
-        print("Backbone feature maps from self.body:")
-        for k, v in out.items():
-            print(f"{k}: {v.shape}")  # Expected: 8x8, 4x4, 2x2
+        #print("Backbone feature maps from self.body:")
+        #for k, v in out.items():
+        #print(f"{k}: {v.shape}")  # Expected: 8x8, 4x4, 2x2
         
 
         # FPN
