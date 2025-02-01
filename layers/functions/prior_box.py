@@ -28,7 +28,7 @@ class PriorBox(object):
                     for cy, cx in product(dense_cy, dense_cx):
                         #anchors += [cx, cy, s_kx, s_ky]
                         anchors.append([cx, cy, s_kx, s_ky])
-        print("length of anchors generated ", len(anchors))
+        #print("length of anchors generated ", len(anchors))
         # back to torch land
         output = torch.Tensor(anchors).view(-1, 4)
         if self.clip:
