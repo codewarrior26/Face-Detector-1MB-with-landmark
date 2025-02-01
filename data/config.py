@@ -9,7 +9,7 @@ cfg_mnet = {
     'gpu_train': True,
     'batch_size': 32,
     'ngpu': 1,
-    'epoch': 1,
+    'epoch': 250,
     'decay1': 190,
     'decay2': 220,
     'image_size': 128,
