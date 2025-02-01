@@ -134,7 +134,7 @@ def train():
 
         # forward
         out = net(images)
-        print("out[0] ", out[0].shape)
+        #print("out[0] ", out[0].shape)
 
         # backprop
         optimizer.zero_grad()
