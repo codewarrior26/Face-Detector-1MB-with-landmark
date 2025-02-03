@@ -1,7 +1,7 @@
 # config.py
 cfg_mnet = {
     'name': 'mobilenet0.25',
-    'min_sizes': [[10, 16], [32, 48], [64, 112]],
+    'min_sizes': [[10, 20], [40, 80], [100, 200]],
     'steps': [16, 32, 64],
     'variance': [0.1, 0.2],
     'clip': False,
@@ -12,7 +12,7 @@ cfg_mnet = {
     'epoch': 250,
     'decay1': 190,
     'decay2': 220,
-    'image_size': 128,
+    'image_size': 212,
     'pretrain': False,
     'return_layers': {'stage1': 1, 'stage2': 2, 'stage3': 3},
     'in_channel': 32,
