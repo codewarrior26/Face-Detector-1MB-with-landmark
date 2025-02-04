@@ -110,9 +110,9 @@ class RetinaFace(nn.Module):
 
     def forward(self,inputs):
         out = self.body(inputs)
-        #print("Backbone feature maps from self.body:")
-        #for k, v in out.items():
-        #print(f"{k}: {v.shape}")  # Expected: 8x8, 4x4, 2x2
+        print("Backbone feature maps from self.body:")
+        for k, v in out.items():
+            print(f"{k}: {v.shape}")  # Expected: 8x8, 4x4, 2x2
         
 
         # FPN
