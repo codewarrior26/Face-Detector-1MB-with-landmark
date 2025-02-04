@@ -1,7 +1,7 @@
 # config.py
 cfg_mnet = {
     'name': 'mobilenet0.25',
-    'min_sizes': [[10, 20], [32, 64], [128, 256]],
+    'min_sizes': [[10, 15], [25, 50], [75, 110]],
     'steps': [8, 16, 32],
     'variance': [0.1, 0.2],
     'clip': False,
